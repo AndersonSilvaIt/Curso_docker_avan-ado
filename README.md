@@ -43,12 +43,82 @@ Para criar um novo container, atravéz de uma imagem já existente
         > **Obs**: Verificar se existe o caminho "c:/temp" primeiro, caso não existir, irá apresentar erro
 * `more File_Name` ➜ Mostra o conteúdo de um arquivo
 
+<br/>
+
+#### Baixar uma imagem
+* `docker pull IMAGE_NAME`
+    >  docker pull mcr.microsoft.com/dotnet/nightly/runtime:9.0-preview
+
+<br/>
+
+### Trabalhando com imagens locais
+* `docker images -a` ➜ Lista todas as imagens
+* `docker save -o "d:\temp\myimage.tar" IMAGE_NAME/ID` ➜ Salva uma imagem <br/>
+    * `docker save -o d:\temp\myimage.tar c1f619b6477e` 
+
+* `docker load -i LOCAL_IMAGE `
+    * `docker load -i d:\temp\myimage.tar`  ➜ Carrega uma imagem .tar para dentro do docker     
+
+* `docker tag ID_IMAGE IMAGE_NAME:TAG` ➜ Altera o nome e a tag da imagem, passando o ID como parÂmetro
+    *  `docker tag c1f619b6477e imagem-carregada:latest`
+
+* `docker rmi ID/IMAGE_NAME` ➜ Remove uma imagem
+    * `docker rmi c1f619b6477e`
+* `docker image prune -a ` ➜ Exclui todas as imagens, mesmo as mesmas que estão sendo usadas por containers
+    
+
+
+## Redes
+
+* `Rede Host` ➜ Rede da máquina em que o docker está sendo usado, o PC Físico digamos assim
+
+* `Rede Interna` ➜ Rede do próprio docker
+
+* `docker network ls` ➜ Lista as redes docker
+
+* `docker network create --driver bridge minha-rede` ➜ Cria uma nova rede específica, onde somente os containers mapeado pra ela conseguirão se comunicar
+
+* `docker run --name nginx2 --network minha-rede -d nginx` ➜ Configura o container para rodar em uma rede específica
+
+* `docker network rm minharede` ➜ Remove uma rede 
+    *   *Se existir containers com essa rede, irá apresentar um erro*
+
+* `docker network inspect minha-rede` ➜ Inspeciona a rede, mostra os containers que estão usando essa rede
+
+* `docker disconnect minha-rede nginx2` ➜ Remove o container **nginx2** da rede
+
+* `docker network connect bridge nginx2` ➜ Conecta o container **nginx2** na rede **bridge**
+    * *Eu posso ter um docker rodando em mais de uma rede, para isso, pasta rodar o commando **connect** novamente apontando para a outra rede*
+
+
+### Volumes
+ `Área de disco da máquina HOST reservada para o container, caso o  container seja deletado, esses dados não ficam perdidos`
+
+`docker run -d -p 8080:80 --name nginx-demo -v d:\docker:/usr/share/nginx/html:ro nginx` <br/>
+* *Criar o volume para a pasta c:\docker*
+
+    * `-v` ➜ Comando para criar o volume<br/>
+    * `d:\docker` ➜ Pasta no HOST que será o volume mapeado<br/>
+    * `/usr/share/nginx/html` ➜ Pasta de dentro do container, que será mapeada para o volume externo (host)
+    * `ro` ➜ Permissão do linux (no caso, somente leitura)
+
+    
+
+### Criar imagem através do Dockerfile  
+* `docker build -t aspnet-app:latest .`
+    * **`build`** ➜ Compila o Dockerfile
+    * **`-t`** ➜ Comando para dar um nome para a imagem a ser criada
+    * **`aspnet-app:latest`** ➜ O nome da imagem criadao
+    * **`.`** ➜ Local onde está localizado o **Dockerfile**
+
+* `Se atentar com os diretórios mapeados dentro do Dockerfile`
+
 ### Comandos Úteis
 
 | Command           | Description                                           |
 | --------               | ---                                                   |
 | `-d`              | Desatacha o prompt de comando, se eu rodar um comando para criar o docker por exemplo, ele me libera o terminal para fazer outra coisa |
-| `-p`        |  Informa em qual porta o docker estará rodando |
+| `-p`        | Informa em qual porta o docker estará rodando |
 | `--name`    | Informa um nome para o container a ser criado |
 | `start`     | Inicia um container existente|
 | `ps`        | Lista os dockers em execução |
@@ -63,3 +133,17 @@ Para criar um novo container, atravéz de uma imagem já existente
 | `inspect`   | Inspeciona os arquivos do docker |
 | `cp`        | Copiar algum arquivo do docker para a máquina local|
 | `more`      | Mostra o conteúdo de um arquivo do container|
+| `pull `     | Faz o download de uma imagem |
+| `images`    | Lista as imagens disponíveis |
+| `-a`        | Lista as imagens pendentes, sem versão e etc. |
+| `save`      | Salva uma imagem |
+| `-o`        | Output, por exemplo ao salvar uma imagem (save -o joga o arquivo para tal lugar) |
+| `load`      | Carrega uma imagem local, por exemplo se alguém te enviar o arquivo .tar|
+| `-i`        | Import, importa uma imagem local |
+| `tag`       | Define uma tag para a imagem, também já definido um nome da imagem nesse momento |
+| `rmi`       | Remover uma imagem |
+| `image prune -a` | Remove todas as imagens |
+| `network ls`| Lista as redes docker |
+| `-v`        | Cria um volume  |
+| `-t`        | Dá um nome para a imagem, quando criada pelo dockerfile
+
