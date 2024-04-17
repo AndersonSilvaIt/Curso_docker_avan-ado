@@ -1,3 +1,4 @@
+
 ## Curso de Docker  Desenvolvedor.IO
 
 Para criar um novo container, atravéz de uma imagem já existente
@@ -112,6 +113,11 @@ Para criar um novo container, atravéz de uma imagem já existente
     * **`.`** ➜ Local onde está localizado o **Dockerfile**
 
 * `Se atentar com os diretórios mapeados dentro do Dockerfile`
+
+
+## Docker Compose
+
+
 
 ### Comandos Úteis
 
