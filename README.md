@@ -117,7 +117,14 @@ Para criar um novo container, atravéz de uma imagem já existente
 
 ## Docker Compose
 
+*  **`Projeto Exemplo`** ➜ `https://github.com/desenvolvedor-io/curso-angular-avancado/tree/master`
 
+* **Pasta do arquivo a ser testado** ➜ `D:\Anderson\Estudos\Cursos\Curso_Docker\compose_exemplo`
+
+* `docker compose up`
+    * *Por padrão, esse comando busca pelo arquvo com nome "docker-compose.yml", ou então, se eu não estiver na mesma pasta do arquido compose, caso  contrário, é necessário passar o nome completo do arquivo "docker compose -f docker-compose-xpto.yml"* 
+
+* `docker compose -p teste up` ➜ Criar o compose agrupado pelo nome **Teste*
 
 ### Comandos Úteis
 
@@ -152,4 +159,5 @@ Para criar um novo container, atravéz de uma imagem já existente
 | `network ls`| Lista as redes docker |
 | `-v`        | Cria um volume  |
 | `-t`        | Dá um nome para a imagem, quando criada pelo dockerfile
+| `-f`        | File, ex: `docker compose -f docker-compose-xpto.yml`|
 
