@@ -1,4 +1,4 @@
-﻿namespace API_Postgres.Business.Models
+﻿namespace TesteDocker_Business
 {
     public class Pessoa : Entity
     {

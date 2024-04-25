@@ -1,4 +1,4 @@
-namespace API_Postgres
+namespace TesteDocker
 {
     public class WeatherForecast
     {

@@ -1,6 +1,7 @@
-﻿using API_Postgres.Business.Interfaces.Repositorios;
-using API_Postgres.Business.Models;
+﻿
 using API_Postgres.ViewModels;
+using API_Postgres_Business.Interfaces.Repositorios;
+using API_Postgres_Business.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 

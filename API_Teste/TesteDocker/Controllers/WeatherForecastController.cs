@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace API_Postgres.Controllers
+namespace TesteDocker.Controllers
 {
     [ApiController]
     [Route("[controller]")]

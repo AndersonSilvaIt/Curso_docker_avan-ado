@@ -1,8 +1,8 @@
-﻿using API_Postgres.Business.Interfaces.Repositorios;
-using API_Postgres.Business.Models;
-using API_Postgres.Data.Contexto;
+﻿using API_Postgres_Business.Interfaces.Repositorios;
+using API_Postgres_Business.Models;
+using API_Postgres_Data.Contexto;
 
-namespace API_Postgres.Data.Repositorios
+namespace API_Postgres_Data.Repositorios
 {
     public class PessoaRepository : Repository<Pessoa>, IPessoaRepository
     {

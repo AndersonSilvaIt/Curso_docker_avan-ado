@@ -1,4 +1,4 @@
-﻿namespace API_Postgres.Business.Models
+﻿namespace API_Postgres_Business.Models
 {
     public abstract class Entity
     {

@@ -1,14 +1,15 @@
-using API_Postgres_Business.Interfaces.Repositorios;
-using API_Postgres_Data.Contexto;
-using API_Postgres_Data.Repositorios;
 using Microsoft.EntityFrameworkCore;
+using TesteDocker_Business.Interfaces;
+using TesteDocker_Data;
+using TesteDocker_Data.Repositorios;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(typeof(Program));
-
+// Add services to the container.
 
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<APIContext>(options =>
+builder.Services.AddDbContext<Contexto>(options =>
 {
     options.UseNpgsql(connection, builder => builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null)
     .CommandTimeout(10));
@@ -17,16 +18,19 @@ builder.Services.AddDbContext<APIContext>(options =>
 builder.Services.AddControllers();
 builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
 
-
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-
-app.UseSwagger();
-app.UseSwaggerUI();
-
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseHttpsRedirection();
 

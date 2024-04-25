@@ -1,6 +1,6 @@
-﻿using API_Postgres.Business.Models;
+﻿using API_Postgres_Business.Models;
 
-namespace API_Postgres.Business.Interfaces.Repositorios
+namespace API_Postgres_Business.Interfaces.Repositorios
 {
     public interface IRepository<T> where T : Entity, new()
     {

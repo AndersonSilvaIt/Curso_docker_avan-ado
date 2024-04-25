@@ -1,7 +1,8 @@
-﻿using API_Postgres.Business.Models;
+﻿
+using API_Postgres_Business.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace API_Postgres.Data.Contexto
+namespace API_Postgres_Data.Contexto
 {
     public class APIContext : DbContext
     {

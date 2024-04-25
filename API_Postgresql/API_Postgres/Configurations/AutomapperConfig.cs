@@ -1,5 +1,5 @@
-﻿using API_Postgres.Business.Models;
-using API_Postgres.ViewModels;
+﻿using API_Postgres.ViewModels;
+using API_Postgres_Business.Models;
 using AutoMapper;
 
 namespace API_Postgres.Configurations

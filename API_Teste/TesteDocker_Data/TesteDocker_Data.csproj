@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\API_Postgres.Business\API_Postgres.Business.csproj" />
+    <ProjectReference Include="..\TesteDocker_Business\TesteDocker_Business.csproj" />
   </ItemGroup>
 
 </Project>
